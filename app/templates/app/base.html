@@ -1,0 +1,178 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <!--Owl Carousel CSS-->
+    <link rel="stylesheet" href="{% static 'app/css/owl.carousel.min.css' %}">
+
+    <!--FontAwesome CSS-->
+    <link rel="stylesheet" href="{% static 'app/css/all.min.css' %}">
+
+    <!--Custom CSS-->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'app/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'app/css/src.css' %}">
+    <link rel="stylesheet" href="{% static 'app/css/home.css' %}">
+
+    <title>Nongare Shop | {% block title %} {% endblock title %} </title>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+     <div class="container">
+       <a class="navbar-brand mb-2 mt-2" href="/">Nongare Shop</a>
+       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+       </button>
+       <div class="collapse navbar-collapse" id="navbarSupportedContent">
+         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+           <li class="nav-item">
+             <a class="nav-link active" aria-current="page" href="/">Home</a>
+           </li>
+           <li class="nav-item dropdown">
+             <a class="nav-link dropdown-toggle text-white" href="#" id="electronicsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+               Electronics
+             </a>
+             <ul class="dropdown-menu" aria-labelledby="electronicsDropdown">
+               <li><a class="dropdown-item" href="{% url 'mobile' %}">Mobile</a></li>
+               <li><a class="dropdown-item" href="#">Laptop</a></li>
+             </ul>
+           </li>
+           <li class="nav-item dropdown">
+             <a class="nav-link dropdown-toggle text-white" href="#" id="fashionDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+               Fashion
+             </a>
+             <ul class="dropdown-menu" aria-labelledby="fashionDropdown">
+               <li><a class="dropdown-item" href="#">Top Wear</a></li>
+               <li><a class="dropdown-item" href="#">Bottom Wear</a></li>
+             </ul>
+           </li>
+         </ul>
+         <!-- Search bar Start -->
+         <div class="input-group">
+           <input type="search" class="form-control" placeholder="Search Your Product">
+           <div class="d-flex">
+             <button class="btn btn-secondary" type="search">
+               <i class="fa fa-search"></i>
+             </button>
+           </div>
+         </div>
+         <p class="mt-4 text-center"><a href="https://www.gungorbudak.com/blog/2018/12/12/bootstrap-4-search-box-with-search-icon/"></a></p>
+         </div>
+           <!-- Search bar  end -->
+           <!-- profileDropdown Start -->
+         <div>
+          <ul class="navbar-nav me-auto mb-2 mt-1 mb-lg-0">
+            {% if request.user.is_authenticated %}
+           <li class="nav-item dropdown mx-2 mb-2">
+              <a class="nav-link dropdown-toggle text-white" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {{request.user.username|capfirst}}
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+                <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
+                <li><a class="dropdown-item" href="{% url 'orders' %}">Orders</a></li>
+                <li><a class="dropdown-item" href="{% url 'passwordchange' %}">Change Password</a></li>
+                <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
+              </ul>
+            </li>
+            <li class="nav-item mx-2">
+             <a href="{% url 'showcart' %}" class="nav-link text-white"><span class="badge bg-danger">{{totalitem}}</span> Cart </a>
+            </li>
+            {% else %}
+            <li class="nav-item mx-2">
+             <a href="{% url 'login' %}" class="nav-link text-white">Login</a>
+            </li>
+            <li class="nav-item mx-2">
+             <a href="{% url 'customerregistration' %}" class="nav-link text-white">Registration</a>
+            </li>
+            {% endif %}
+          </ul>
+         </div>
+         <!-- profileDropdown Start -->
+       </div>
+     </div>
+    </nav>
+    {% block banner_slider %} {% endblock banner_slider %}
+    {% block livesale %} {% endblock livesale %}
+    {% block main-content %} {% endblock main-content %}
+    {% block payment-gateway %} {% endblock payment-gateway %}
+
+
+      <!-- Site footer -->
+      <footer class="site-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12 col-md-6">
+              <h6>About of Nongare Shop</h6>
+              <p class="text-justify">Launched in 2018, nongareshop.com is the leading platform for global wholesale trade. We serve millions of buyers and suppliers around the world. As part of the Nongare Shop, our mission is to make it easy to do business anywhere. We do this by giving suppliers the tools necessary to reach a global audience for their products, and by helping buyers find products and suppliers quickly and efficiently</p>
+            </div>
+  
+            <div class="col-xs-6 col-md-3">
+              <h6>Customer Care</h6>
+              <ul class="footer-links">
+                <li><a href="https://www.facebook.com/nongareshop/?ref=pages_you_manage">Help Center</a></li>
+                <li><a href="https://www.facebook.com/nongareshop/about/?ref=page_internal">How to Buy</a></li>
+                <li><a href="https://www.facebook.com/nongareshop/?ref=pages_you_manage">Contact Us</a></li>
+                <li><a href="https://www.facebook.com/nongareshop/?ref=pages_you_manage">Our App</a></li>
+              </ul>
+            </div>
+  
+            <div class="col-xs-6 col-md-3">
+              <h6>Quick Links</h6>
+              <ul class="footer-links">
+                <li><a href="https://www.facebook.com/nongareshop/about/?ref=page_internal">About Us</a></li>
+                <li><a href="https://www.facebook.com/nongareshop/?ref=pages_you_manage">Contact Us</a></li>
+                <li><a href="https://www.facebook.com/nongareshop/?ref=pages_you_manage">Contribute</a></li>
+                <li><a href="https://www.facebook.com/nongareshop/?ref=pages_you_manage">Privacy Policy</a></li>
+                <li><a href="https://arafathoshen.netlify.app/">Other's Website</a></li>
+              </ul>
+            </div>
+          </div>
+          <hr>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8 col-sm-6 col-xs-12">
+              <p class="copyright-text">Copyright & copy; 2022 All Rights Reserved by <b>Nongare Shop</b></p>
+            </div>
+  
+            <div class="col-md-4 col-sm-6 col-xs-12">
+              <ul class="social-icons">
+                <li><a href="https://www.facebook.com/nongareshop/?ref=pages_you_manage" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                <li><a href="https://www.instagram.com/arafat99hossain/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                <li><a href="https://arafathoshen.netlify.app/" target="_blank"><i class="fab fa-dribbble"></i></a></li>
+                <li><a class="linkedin" href="https://www.linkedin.com/in/arafat7/" target="_blank"><i class="fab fa-linkedin"></i></a></li>   
+              </ul>
+            </div>
+          </div>
+        </div>
+  </footer>
+    
+
+    {% comment %} <!-- Start Footer --> 
+    <footer class="container-fluid bg-dark text-center p-2 mt-5"><br>
+        <small class="text-white">Copyright &copy; 2022 || Designed By Arafat || </small><br>
+        <div class="social">
+          <a href="https://www.facebook.com/arafat9hossain/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/arafat99hossain/" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://arafathoshen.netlify.app/" target="_blank"><i class="fab fa-dribbble"></i></a>
+        </div>
+    </footer> <!-- End Footer --> {% endcomment %}
+
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+    <script src="{% static 'app/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'app/js/all.min.js' %}"></script>
+    <script src="{% static 'app/js/myscript.js' %}"></script>
+  </body>
+</html>
