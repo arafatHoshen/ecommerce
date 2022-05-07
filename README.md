@@ -1,3 +1,4 @@
+![photo](https://nongareshop.pythonanywhere.com/static/app/images/banner/s2.jpg)
 
 # Django E-commerce
 
