@@ -1,5 +1,4 @@
 ![photo](https://nongareshop.pythonanywhere.com/static/app/images/banner/s2.jpg)
-![ss](https://user-images.githubusercontent.com/74883556/167244070-9b81e92a-2cb2-45a9-81e0-70ea0b9b9599.jpg)
 
 # Django E-commerce
 
